@@ -4,7 +4,9 @@ public class Main {
     //y=(0.198 * (1 - (1 - (250 - x - y)/1000) ^20 ) + 0.056) * x + 0.60(1-y/500)^20 * y
 
     public static void main(String[] args){
-        System.out.println(getY(11.430));
+        for(double y=0; y<500; y++){
+            getY(y);
+        }
     }
 
     static double getX(double y){
@@ -31,8 +33,9 @@ public class Main {
         double yTwentyPower = Math.pow(1-yFraction, 20);
         double xFactor = 0.198 * (1-xyTwentyPower + 0.56);
         double yFactor = 0.60 * yTwentyPower * y;
-
-        return xFactor * x + yFactor * y;
+        double output = xFactor * x + yFactor * y;
+        System.out.println(y + ", " + x + ", " + output);
+        return output;
     }
 
 }
